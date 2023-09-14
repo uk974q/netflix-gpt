@@ -1,27 +1,67 @@
 import Header from "./Header"
 import login from "../assets/login.png"
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useRef, useState } from "react"
 import { validate } from "../utils/formValidate"
+import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUser } from "../utils/userSlice";
 
 const Login = () => {
     const [isUser, setIsUser] = useState(true)
     const [errorMessage, setErrorMessage] = useState("")
+    const dispatchAction = useDispatch()
+    const navigate = useNavigate()
     const name = useRef(null)
     const email = useRef(null)
     const password = useRef(null)
-
+    
+   
     const handleSign = () => {
+        console.log("handle")
         let username = isUser ? "user" : name.current.value 
+        console.log("Name",name)
         const {valid, msg} = validate(email.current.value, password.current.value, username)
         setErrorMessage(msg)
-        console.log("Msg",msg)
+        console.log("Msg",msg,"=",valid)
         if(!valid){
             return
         }
+
         if(isUser){
-            console.log("Signed In")
+            signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+            .then((userCredential) => {
+                // const user = userCredential.user;
+                // console.log("User signed in", user)
+                navigate("/browse")
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                setErrorMessage(errorCode + " : " + errorMessage)
+            });
         }else{
             console.log("Signed up")
+            createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+            .then((userCredential) => {
+                console.log("Signed up promise")
+                updateProfile(auth.currentUser, {
+                    displayName: name.current.value
+                  }).then(() => {
+                    const {uid, email, displayName } = auth.currentUser;
+                    dispatchAction(setUser({uid, email, displayName }))
+                    console.log("Display promise", name)
+                    navigate("/browse")
+                  }).catch((error) => {
+                    setErrorMessage("Profile Updation error : "+ error)
+                  });   
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                setErrorMessage(errorCode + " : " + errorMessage)
+            });
         }
     }
 
