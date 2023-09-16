@@ -14,7 +14,7 @@ const useNowPlaying = () =>{
         const json = await data.json()
         dispatchActions(setNowPlayingData(json.results))
 
-        console.log("Json",json)
+        // console.log("Json",json)
 
     }
 }

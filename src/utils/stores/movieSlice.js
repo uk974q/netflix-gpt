@@ -4,6 +4,7 @@ const MovieSlice = createSlice({
     name: "movie",
     initialState:{
         nowPlayingData: [],
+        trendingList: [],
         trending: null,
         videoKey: null
     },
@@ -16,9 +17,12 @@ const MovieSlice = createSlice({
         },
         setVideoKey: (state, actions) => {
             state.videoKey = actions.payload
-        } 
+        },
+        setListOfTrending: (state,actions) => {
+            state.trendingList = actions.payload
+        }
     }
 })
 
-export const {setNowPlayingData, setTrending, setVideoKey} = MovieSlice.actions
+export const {setNowPlayingData, setTrending, setVideoKey, setListOfTrending} = MovieSlice.actions
 export default MovieSlice.reducer

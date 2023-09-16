@@ -7,12 +7,12 @@ import { YOUTUBE_LINK, YOUTUBE_LINK_SUFFIX } from '../utils/constants'
 const VideoPlaying = () => {
     useTrending()
     const latest = useSelector((store) => store.movie.trending)
-    console.log("After latest",latest)
+    // console.log("After latest",latest)
     useVideoKey(latest?.id)
-    console.log("After videokey",latest)
+    // console.log("After videokey",latest)
     
     const videoKey = useSelector((store) => store.movie.videoKey)
-    console.log("Videokey",videoKey)
+    // console.log("Videokey",videoKey)
     if(!latest || !videoKey) return
     // if(!videoKey) return
 

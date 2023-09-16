@@ -7,7 +7,7 @@ const Browse = () => {
   useNowPlaying()
 
   return (
-    <div>
+    <div className="bg-black">
       <Header />
       <Hero />
     </div>
