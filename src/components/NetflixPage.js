@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 import { onAuthStateChanged } from 'firebase/auth'
 import { useDispatch } from 'react-redux'
 import { auth } from '../utils/firebase'
-import { removeUser, setUser } from '../utils/userSlice'
+import { removeUser, setUser } from '../utils/stores/userSlice'
 
 const appRoutes = createBrowserRouter([
    { 

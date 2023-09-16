@@ -6,7 +6,7 @@ import { validate } from "../utils/formValidate"
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setUser } from "../utils/userSlice";
+import { setUser } from "../utils/stores/userSlice";
 
 const Login = () => {
     const [isUser, setIsUser] = useState(true)
@@ -19,12 +19,12 @@ const Login = () => {
     
    
     const handleSign = () => {
-        console.log("handle")
+        // console.log("handle")
         let username = isUser ? "user" : name.current.value 
-        console.log("Name",name)
+        // console.log("Name",name)
         const {valid, msg} = validate(email.current.value, password.current.value, username)
         setErrorMessage(msg)
-        console.log("Msg",msg,"=",valid)
+        // console.log("Msg",msg,"=",valid)
         if(!valid){
             return
         }
@@ -45,13 +45,13 @@ const Login = () => {
             console.log("Signed up")
             createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
             .then((userCredential) => {
-                console.log("Signed up promise")
+                // console.log("Signed up promise")
                 updateProfile(auth.currentUser, {
                     displayName: name.current.value
                   }).then(() => {
                     const {uid, email, displayName } = auth.currentUser;
                     dispatchAction(setUser({uid, email, displayName }))
-                    console.log("Display promise", name)
+                    // console.log("Display promise", name)
                     navigate("/browse")
                   }).catch((error) => {
                     setErrorMessage("Profile Updation error : "+ error)
@@ -68,7 +68,7 @@ const Login = () => {
     return(
         <div className="flex flex-col relative">
             <Header />
-            <img src={login} className="h-[100vh]" />
+            <img src={login} alt="background for login of myflix app" className="h-[100vh]" />
             <form onSubmit={(e) => e.preventDefault()} className="absolute bg-transparent bg-gradient-to-b  w-2/3 lg:w-1/2  from-black p-5 flex flex-col gap-5 top-[75px] left-[10px] lg:top-[15%] lg:left-[25%]">
                 <h1 className="text-white self-start font-bold text-2xl">{isUser ? 'Sign In' : 'Sign Up'}</h1>
                 {

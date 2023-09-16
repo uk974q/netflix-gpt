@@ -18,7 +18,7 @@ const Header = () => {
   return (
     <div className='h-12 bg-black flex items-center justify-between'>
       <div className="flex items-center">
-        <img src={logo} className="w-16 h-10"/>
+        <img src={logo} alt="logo" className="w-16 h-10"/>
         <span className="font-bold text-white text-2xl">MyFlix</span>
       </div>
       {userPresent && 
