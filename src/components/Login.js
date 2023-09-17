@@ -66,7 +66,7 @@ const Login = () => {
     }
 
     return(
-        <div className="flex flex-col relative">
+        <div className="flex flex-col relative bg-black">
             <Header />
             <img src={login} alt="background for login of myflix app" className="h-[100vh]" />
             <form onSubmit={(e) => e.preventDefault()} className="absolute bg-transparent bg-gradient-to-b  w-2/3 lg:w-1/2  from-black p-5 flex flex-col gap-5 top-[75px] left-[10px] lg:top-[15%] lg:left-[25%]">

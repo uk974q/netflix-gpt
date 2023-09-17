@@ -26,10 +26,6 @@ const Header = () => {
     dispatchActions(toggleAIMovie())
   }
 
-  const handleLanguage = () => {
-
-  }
-
   return (
     <div className='h-12 bg-transparent flex items-center justify-between'>
       <div className="flex items-center">
