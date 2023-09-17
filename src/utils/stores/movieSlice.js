@@ -6,7 +6,10 @@ const MovieSlice = createSlice({
         nowPlayingData: [],
         trendingList: [],
         trending: null,
-        videoKey: null
+        videoKey: null,
+        aiTerm: null,
+        chatSuggestions: [],
+        suggestedMovies: []
     },
     reducers: {
         setNowPlayingData: (state, actions) => {
@@ -20,9 +23,18 @@ const MovieSlice = createSlice({
         },
         setListOfTrending: (state,actions) => {
             state.trendingList = actions.payload
+        },
+        setChatSuggestions: (state, actions) => {
+            state.chatSuggestions = actions.payload
+        },
+        setSuggestedMovies: (state, actions) => {
+            state.suggestedMovies = actions.payload
+        },
+        setAiTerm : (state, actions) => {
+            state.aiTerm = actions.payload
         }
     }
 })
 
-export const {setNowPlayingData, setTrending, setVideoKey, setListOfTrending} = MovieSlice.actions
+export const {setNowPlayingData, setTrending, setVideoKey, setListOfTrending, setChatSuggestions, setSuggestedMovies, setAiTerm} = MovieSlice.actions
 export default MovieSlice.reducer

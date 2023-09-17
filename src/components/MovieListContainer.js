@@ -7,8 +7,8 @@ const MovieListContainer = () => {
     const trending = useSelector((store) => store.movie.trendingList)
     return (
         <div className=''>
-            <MovieListCarousel value={nowPlaying} title="Now Playing" />
-            <MovieListCarousel value={trending} title="Trending" />
+            <MovieListCarousel value={nowPlaying} title="Now Playing" isWrap={false}/>
+            <MovieListCarousel value={trending} title="Trending" isWrap={false} />
         </div>
     )
 }
