@@ -27,7 +27,7 @@ const Header = () => {
   }
 
   return (
-    <div className='h-12 bg-transparent flex items-center justify-between'>
+    <div className='h-12 bg-transparent flex items-center justify-between ml-5 mr-5'>
       <div className="flex items-center">
         <img src={logo} alt="logo" className="w-16 h-10"/>
         <span className="font-bold text-white text-2xl">MyFlix</span>
