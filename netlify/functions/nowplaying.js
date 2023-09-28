@@ -12,7 +12,6 @@ exports.handler = async function (event) {
     // const { id } = event.queryStringParameters;
     const response = await fetch(NOW_PLAYING_MOVIES, API_MOVIES_OPTIONS);
     const data = await response.json()
-    // console.log("Response",data)
     return {
       statusCode: 200,
       body: JSON.stringify(data),

@@ -11,24 +11,15 @@ const Browse = () => {
   const aiSearch = useSelector((store) => store.toggle.aiSearch)
 
   return (
-    <div className="bg-black relative">
+    <div className="bg-black relative h-[100vh] flex flex-col flex-grow overflow-hidden">
       <Header />
       {
         aiSearch ? 
           <AISearch />  :
           <Hero />
       }
-      {/* <ModalLanguage /> */}
     </div>
   )
 }
 
 export default Browse
-
-// Video Container
-//   Video Background
-//   Title  
-// Carousel container 
-//   Movie lists 
-//     Cards
-//       Movie Image

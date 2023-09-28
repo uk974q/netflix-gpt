@@ -6,7 +6,7 @@ import MovieListContainer from './MovieListContainer'
 const Hero = () => {
   const trending = useSelector((store) => store.movie.trending)
   return (
-    <div className='relative bg-black'>
+    <div className='relative bg-black flex flex-col flex-grow overflow-auto'>
       {
         trending && 
         <div className="h-[70vh] bg-gradient-to-r gradient from-slate-900 to-90% text-left pl-5 w-1/3 absolute text-white flex flex-col justify-center">

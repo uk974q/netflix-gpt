@@ -19,12 +19,9 @@ const Login = () => {
     
    
     const handleSign = () => {
-        // console.log("handle")
         let username = isUser ? "user" : name.current.value 
-        // console.log("Name",name)
         const {valid, msg} = validate(email.current.value, password.current.value, username)
         setErrorMessage(msg)
-        // console.log("Msg",msg,"=",valid)
         if(!valid){
             return
         }
@@ -32,8 +29,6 @@ const Login = () => {
         if(isUser){
             signInWithEmailAndPassword(auth, email.current.value, password.current.value)
             .then((userCredential) => {
-                // const user = userCredential.user;
-                // console.log("User signed in", user)
                 navigate("/browse")
             })
             .catch((error) => {
@@ -42,16 +37,13 @@ const Login = () => {
                 setErrorMessage(errorCode + " : " + errorMessage)
             });
         }else{
-            console.log("Signed up")
             createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
             .then((userCredential) => {
-                // console.log("Signed up promise")
                 updateProfile(auth.currentUser, {
                     displayName: name.current.value
                   }).then(() => {
                     const {uid, email, displayName } = auth.currentUser;
                     dispatchAction(setUser({uid, email, displayName }))
-                    // console.log("Display promise", name)
                     navigate("/browse")
                   }).catch((error) => {
                     setErrorMessage("Profile Updation error : "+ error)
